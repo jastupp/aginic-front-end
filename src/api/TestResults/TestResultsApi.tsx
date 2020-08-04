@@ -1,6 +1,6 @@
 import State from "../../components/results/State";
 
-const baseUrl = "/test";
+const baseUrl = `http://${window.location.hostname}:3001/test`;
 
 /**
  * Get the test results from the rest server
