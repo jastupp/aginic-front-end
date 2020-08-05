@@ -9,6 +9,7 @@ const ResultPage = () => {
 
     // set the results in state
     const [ results, setResults ] = useState([]);
+    const [ loading, setLoading ] = useState(true);
 
     /**
      * Called when the component is rendered
@@ -16,9 +17,8 @@ const ResultPage = () => {
     useEffect(() => {
         // set the results into state
         (async () => {
-            const results = await getResults();
             setResults(await getResults());
-            console.log("Use Effect", results);
+            setLoading(false);
         })();
     }, [results.length]);
 
@@ -26,10 +26,10 @@ const ResultPage = () => {
         <div>
             <h4 className='text-center jumbotron'>The API Test Results</h4>
             <div className='mr-5 ml-5'>
-                <ResultList results={results}/>
+                <ResultList results={results} loading={loading}/>
             </div>
         </div>
-    )
+    );
 }
 
 export default ResultPage;

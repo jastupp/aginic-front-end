@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import AddTestForm from "./AddTestForm/AddTestForm";
 import { addTestURL } from "../../api/TestResults/TestResultsApi";
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 /**
  * Interface for the event
@@ -32,7 +34,9 @@ const AddTestPage = () => {
      */
     const onSubmit = (event: IEvent) => {
         event.preventDefault();
+        toast.success(`http://${URL} added to tests..`,{"autoClose": 3000});
         addTestURL(URL);
+        setURL('');
     }
 
     /**
@@ -40,9 +44,10 @@ const AddTestPage = () => {
      */
     return (
         <div>
+            <ToastContainer/>
             <h4 className={'text-center jumbotron'}>Add a URL to test</h4>
             <div className={'mr-5 ml-5'}>
-                <AddTestForm URL={URL} onChange={onChange} onSubmit={onSubmit}/>
+                <AddTestForm URL={URL} onChange={onChange} onSubmit={onSubmit} />
             </div>
         </div>
     );

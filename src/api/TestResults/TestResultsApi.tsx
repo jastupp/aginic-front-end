@@ -13,7 +13,6 @@ const getResults = async () => await (await fetch(baseUrl)).json();
  * @param url
  */
 const addTestURL = (url: string) => {
-    console.log("URL = ", url);
     fetch(baseUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
